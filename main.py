@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .db_config import create_db_and_tables
+# from .db_config import create_db_and_tables
 from .routes import anuncios, blogs, menu
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -7,10 +7,10 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 
-@app.get("/")
-def root():
-    create_db_and_tables()
-    return "Tables created"
+# @app.get("/")
+# def root():
+#     create_db_and_tables()
+#     return "Tables created"
 
 
 app.include_router(anuncios.rt)
