@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import Annotated
-from sqlmodel import Session, select, update
-from ..models import Menu
-from ..db_config import get_session
+from sqlmodel import Session, update
+from database.models import Menu
+from database.db_config import get_session
 
 
 rt = APIRouter(prefix="/menu", tags=["menu"])

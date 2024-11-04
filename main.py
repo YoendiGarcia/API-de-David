@@ -1,16 +1,18 @@
 from fastapi import FastAPI
-# from .db_config import create_db_and_tables
-from .routes import anuncios, blogs, menu
+from database.db_config import create_db_and_tables
+from routes import anuncios, blogs, menu
 from fastapi.middleware.cors import CORSMiddleware
+import uvicorn
+import os
 
 
 app = FastAPI()
 
 
-# @app.get("/")
-# def root():
-#     create_db_and_tables()
-#     return "Tables created"
+@app.get("/")
+def root():
+    create_db_and_tables()
+    return "Tables created"
 
 
 app.include_router(anuncios.rt)
@@ -24,3 +26,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))  
+    uvicorn.run(app, host="0.0.0.0", port=port)
