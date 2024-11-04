@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 # from .db_config import create_db_and_tables
-from routes import anuncios, blogs, menu
+from .routes import anuncios, blogs, menu
 from fastapi.middleware.cors import CORSMiddleware
 
 
